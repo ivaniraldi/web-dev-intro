@@ -5,115 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Media queries</title>
     <style>
+      /* ===== RESET CSS UNIVERSAL ===== */
       * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+        padding: 0;        /* Elimina el padding interno de todos los elementos */
+        margin: 0;         /* Elimina el margen externo de todos los elementos */
+        box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
       }
+
+      /* ===== LAYOUT PRINCIPAL DEL BODY ===== */
       body {
-        display: grid;
-        height: 100vh;
-        background-color: #000;
-        color: white;
+        display: grid;     /* Convierte el body en un contenedor CSS Grid */
+        height: 100vh;     /* Altura del 100% del viewport (pantalla visible) */
+        background-color: #000; /* Fondo negro */
+        color: white;      /* Texto blanco */
+        
+        /* Define las áreas del grid con nombres para organizar el layout */
         grid-template-areas:
-          "nav"
-          "menu"
-          "main";
-        grid-template-rows: 100px 70px auto;
-        grid-template-columns: auto;
+          "nav"    /* Primera fila: área de navegación */
+          "menu"   /* Segunda fila: área del menú lateral */
+          "main";  /* Tercera fila: área del contenido principal */
+        
+        /* Define las filas del grid */
+        grid-template-rows: 100px 70px auto; /* nav:100px, menu:70px, main:auto */
+        grid-template-columns: auto; /* Una sola columna que se ajusta automáticamente */
       }
+
+      /* ===== CLASE DE UTILIDAD FLEXBOX ===== */
       .flex-center{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: flex;           /* Convierte el elemento en contenedor flexbox */
+        justify-content: center; /* Centra horizontalmente los elementos hijos */
+        align-items: center;     /* Centra verticalmente los elementos hijos */
       }
 
+      /* ===== NAVEGACIÓN ===== */
       .navigation {
-        border: 1px solid red;
-        grid-area: nav;
+        border: 1px solid red;   /* Borde rojo de 1px para visualizar el área */
+        grid-area: nav;          /* Asigna este elemento al área "nav" del grid */
       }
+
+      /* ===== MENÚ LATERAL ===== */
       .lat-menu {
-        border: 1px solid blue;
-        grid-area: menu;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
+        border: 1px solid blue;  /* Borde azul para visualizar el área */
+        grid-area: menu;         /* Asigna al área "menu" del grid */
+        display: flex;           /* Contenedor flexbox */
+        flex-direction: row;     /* Elementos en fila horizontal */
+        justify-content: space-around; /* Distribuye elementos con espacio alrededor */
+        align-items: center;     /* Centra verticalmente los elementos */
       }
+
+      /* ===== CONTENIDO PRINCIPAL ===== */
       .main-content {
-        border: 1px solid orange;
-        grid-area: main;
+        border: 1px solid orange; /* Borde naranja para visualizar el área */
+        grid-area: main;          /* Asigna al área "main" del grid */
       }
 
+      /* ===== ESTILOS DE LA TARJETA ===== */
       .card{
-        color: black;
-        width: 300px;
-        height: 370px;
-        border-radius: 10px;
-        background-color: azure;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px;
+        color: black;             /* Texto negro (sobrescribe el color blanco del body) */
+        width: 300px;             /* Ancho fijo de 300px */
+        height: 370px;            /* Alto fijo de 370px */
+        border-radius: 10px;      /* Bordes redondeados de 10px */
+        background-color: azure;  /* Fondo azul claro */
+        display: flex;            /* Contenedor flexbox */
+        flex-direction: column;   /* Elementos en columna vertical */
+        justify-content: space-between; /* Distribuye elementos con espacio entre ellos */
+        padding: 20px;            /* Espaciado interno de 20px */
       }
+
+      /* ===== IMAGEN DE LA TARJETA ===== */
       .card-img{
-        width: 300px;
-        height: 150px;
-        object-fit: contain;
+        width: 300px;             /* Ancho fijo de 300px */
+        height: 150px;            /* Alto fijo de 150px */
+        object-fit: contain;      /* Mantiene la proporción de la imagen sin recortarla */
       }
+
+      /* ===== TÍTULO DE LA TARJETA ===== */
       .card-title{
-        text-align: center;
-        font-size: larger;
-        font-weight: bolder;
+        text-align: center;       /* Centra el texto horizontalmente */
+        font-size: larger;        /* Tamaño de fuente más grande que el normal */
+        font-weight: bolder;      /* Texto en negrita */
       }
+
+      /* ===== TEXTO DE LA TARJETA ===== */
       .card-text{
-        padding: 10px;
+        padding: 10px;            /* Espaciado interno de 10px */
       }
+
+      /* ===== BOTÓN DE LA TARJETA ===== */
       .card-btn{
-        padding: 8px;
-        background-color: lavender;
-        border: 2px solid rgb(186, 186, 228);
-        border-radius: 5px;
-
-
+        padding: 8px;             /* Espaciado interno de 8px */
+        background-color: lavender; /* Fondo lavanda */
+        border: 2px solid rgb(186, 186, 228); /* Borde de 2px en color gris azulado */
+        border-radius: 5px;       /* Bordes redondeados de 5px */
       }
+
+      /* ===== MEDIA QUERY PARA TABLETS (768px+) ===== */
       @media (min-width: 768px) {
         body {
-          background-color: white;
-          color: black;
+          background-color: white; /* Cambia el fondo a blanco */
+          color: black;            /* Cambia el texto a negro */
+          
+          /* Reorganiza el layout en 3 columnas: nav | main | menu */
           grid-template-areas: "nav main menu";
-          grid-template-rows: auto;
+          grid-template-rows: auto; /* Una sola fila que se ajusta automáticamente */
         }
+        
         .lat-menu{
-            flex-direction: column;
+            flex-direction: column; /* Cambia el menú a disposición vertical */
         }
       }
+
+      /* ===== MEDIA QUERY PARA DESKTOP (992px+) ===== */
       @media (min-width: 992px) {
         body {
-          background-color: rgb(49, 49, 49);
-          color: rgb(233, 233, 233);
+          background-color: rgb(49, 49, 49);    /* Fondo gris oscuro */
+          color: rgb(233, 233, 233);            /* Texto gris claro */
+          
+          /* Layout de 2x2: nav ocupa ambas columnas, menu y main en segunda fila */
           grid-template-areas:
-            "nav nav"
-            "menu main";
-          grid-template-rows: 100px auto;
-          grid-template-columns: 300px auto;
+            "nav nav"    /* Primera fila: nav ocupa ambas columnas */
+            "menu main"; /* Segunda fila: menu en primera columna, main en segunda */
+          
+          grid-template-rows: 100px auto;       /* Primera fila 100px, segunda se ajusta */
+          grid-template-columns: 300px auto;    /* Primera columna 300px, segunda se ajusta */
         }
       }
     </style>
   </head>
   <body>
+    <!-- ===== NAVEGACIÓN ===== -->
     <nav class="navigation">
       <h1>Barra de navegación</h1>
     </nav>
+
+    <!-- ===== MENÚ LATERAL ===== -->
     <menu class="lat-menu">
         <a href="#">Inicio</a>
         <a href="#">Sobre nosotros</a>
         <a href="#">contacto</a>
     </menu>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <main class="main-content">
       <h2>Contenido</h2>
 
       <section>
+        <!-- Texto de ejemplo -->
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
           consectetur deserunt, quibusdam, laboriosam facere, at ut recusandae
@@ -121,12 +158,20 @@
           reiciendis reprehenderit.
         </p>
 
+        <!-- ===== TARJETA DE PRODUCTO ===== -->
         <div class="card">
-            <img class="card-img" src="https://webfones.vtexassets.com/arquivos/ids/245410-800-800?v=638749789784500000&width=800&height=800&aspect=true" alt="">
+            <!-- Imagen del producto -->
+            <img class="card-img" src="https://webfones.vtexassets.com/arquivos/ids/245410-800-800?v=638749789784500000&width=800&height=800&aspect=true" alt="PlayStation 5 Slim">
+            
+            <!-- Título del producto -->
             <h3 class="card-title">PlayStation 5 Slim</h3>
+            
+            <!-- Descripción del producto -->
             <p class="card-text">2tb SSD + 5 juegos de regalo</p>
+            
+            <!-- Contenedor del botón centrado -->
             <div class="flex-center">
-
+                <!-- Botón de compra -->
                 <button class="card-btn">Comprar</button>
             </div>
         </div>
