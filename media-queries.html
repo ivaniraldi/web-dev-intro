@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media queries</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        height: 100vh;
+        background-color: #000;
+        color: white;
+        grid-template-areas:
+          "nav"
+          "menu"
+          "main";
+        grid-template-rows: 100px 70px auto;
+        grid-template-columns: auto;
+      }
+      .flex-center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .navigation {
+        border: 1px solid red;
+        grid-area: nav;
+      }
+      .lat-menu {
+        border: 1px solid blue;
+        grid-area: menu;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .main-content {
+        border: 1px solid orange;
+        grid-area: main;
+      }
+
+      .card{
+        color: black;
+        width: 300px;
+        height: 370px;
+        border-radius: 10px;
+        background-color: azure;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      .card-img{
+        width: 300px;
+        height: 150px;
+        object-fit: contain;
+      }
+      .card-title{
+        text-align: center;
+        font-size: larger;
+        font-weight: bolder;
+      }
+      .card-text{
+        padding: 10px;
+      }
+      .card-btn{
+        padding: 8px;
+        background-color: lavender;
+        border: 2px solid rgb(186, 186, 228);
+        border-radius: 5px;
+
+
+      }
+      @media (min-width: 768px) {
+        body {
+          background-color: white;
+          color: black;
+          grid-template-areas: "nav main menu";
+          grid-template-rows: auto;
+        }
+        .lat-menu{
+            flex-direction: column;
+        }
+      }
+      @media (min-width: 992px) {
+        body {
+          background-color: rgb(49, 49, 49);
+          color: rgb(233, 233, 233);
+          grid-template-areas:
+            "nav nav"
+            "menu main";
+          grid-template-rows: 100px auto;
+          grid-template-columns: 300px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navigation">
+      <h1>Barra de navegación</h1>
+    </nav>
+    <menu class="lat-menu">
+        <a href="#">Inicio</a>
+        <a href="#">Sobre nosotros</a>
+        <a href="#">contacto</a>
+    </menu>
+    <main class="main-content">
+      <h2>Contenido</h2>
+
+      <section>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
+          consectetur deserunt, quibusdam, laboriosam facere, at ut recusandae
+          in molestiae nostrum illo totam est vitae veniam rem dolore eum
+          reiciendis reprehenderit.
+        </p>
+
+        <div class="card">
+            <img class="card-img" src="https://webfones.vtexassets.com/arquivos/ids/245410-800-800?v=638749789784500000&width=800&height=800&aspect=true" alt="">
+            <h3 class="card-title">PlayStation 5 Slim</h3>
+            <p class="card-text">2tb SSD + 5 juegos de regalo</p>
+            <div class="flex-center">
+
+                <button class="card-btn">Comprar</button>
+            </div>
+        </div>
+
+      </section>
+    </main>
+  </body>
+</html>
